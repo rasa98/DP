@@ -16,7 +16,7 @@
 ### Project Tasks
 
 1. Word Co-occurrence Network: Forms a directed weighted graph. Nodes represent words; a link A -> B exists if B follows A in any line. Weights represent the probability P(B|A).
-2. Positional Inverted Index: Maps tokens to their specific file names and positions (line/token index).
+2. Positional Inverted Index: Maps tokens to their specific file names and positions (token index).
 3. Tweet Similarity: Calculates the frequency distribution of Damerau-Levenshtein distances between a target tweet T (passed as a parameter) and the input dataset.
 
 ---
