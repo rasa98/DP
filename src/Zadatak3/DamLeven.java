@@ -22,7 +22,7 @@ public class DamLeven{
                         j > 1 &&
                         source.charAt(i - 1) == target.charAt(j - 2) &&
                         source.charAt(i - 2) == target.charAt(j - 1)) {
-                    dist[i][j] = Math.min(dist[i][j], dist[i - 2][j - 2] + cost);
+                    dist[i][j] = Math.min(dist[i][j], dist[i - 2][j - 2] + 1);
                 }
             }
         }

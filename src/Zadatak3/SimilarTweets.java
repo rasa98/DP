@@ -20,11 +20,11 @@ public class SimilarTweets {
         @Override
         protected void setup(Context context) throws IOException, InterruptedException {
             Configuration conf = context.getConfiguration();
-            customString = conf.get("custom.string"); // Retrieve the custom string from configuration
+            customString = conf.get("custom.string").toLowerCase().trim().replaceAll("\\s+", " ");
         }
 
         public void map(Object key, Text value, Context context) throws IOException, InterruptedException {
-            String line = value.toString();
+            String line = value.toString().toLowerCase().trim().replaceAll("\\s+", " ");
             int calcDist = DamLeven.calculateDistance(line, customString);
             dist.set(calcDist);
             context.write(dist, one);
@@ -49,15 +49,15 @@ public class SimilarTweets {
 
     public static void main(String[] args) throws Exception {
         Configuration conf = new Configuration();
-        conf.set("custom.string", args[3]); // Set the custom string in the configuration
-        Job job = Job.getInstance(conf, args[0]);
+        conf.set("custom.string", args[2]); // Set the custom string in the configuration
+        Job job = Job.getInstance(conf, "SimilarTweets");
         job.setJarByClass(SimilarTweets.class);
         job.setMapperClass(DistanceSimilarityMapper.class);
         job.setReducerClass(DistanceSimilarityReducer.class);
         job.setOutputKeyClass(IntWritable.class);
         job.setOutputValueClass(IntWritable.class);
-        FileInputFormat.addInputPath(job, new Path(args[1]));
-        FileOutputFormat.setOutputPath(job, new Path(args[2]));
+        FileInputFormat.addInputPath(job, new Path(args[0]));
+        FileOutputFormat.setOutputPath(job, new Path(args[1]));
         System.exit(job.waitForCompletion(true) ? 0 : 1);
     }
 }

@@ -1,4 +1,5 @@
-Jeste ali daj malo vise.
-krupnim listovima. 
-Gde je to bilo.
-  Tooo! je to Jeste ali jeste, ali ne daj da jeste ili nije jeste?
+Realizovati MR aplikaciju koja za tekstualne fajlove u ulaznom direktorijumu formira pozicioni
+invertovani indeks. Pozicioni invertovani indeks za svaku reč ukazuje u kojim fajlovima i na kojim
+pozicijama u tim fajlovima se data reč nalazi. Sami odabrati šta će biti pozicija reči u fajlu (redni broj
+tokena ili redni broj karaktera ili nešto kombinovano kao redni broj linije i tokena u toj liniji ili nešto
+četvrto).
