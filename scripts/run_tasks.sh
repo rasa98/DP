@@ -31,7 +31,7 @@ case $TASK in
         echo "Usage: ./run_tasks.sh 3 \"your target sentence here\""
         exit 1
     fi
-    EXTRA_ARGS="\"$2\""
+    EXTRA_ARGS="$2"
     ;;
   *)
     echo "Unknown task: $TASK"
@@ -48,7 +48,7 @@ fi
 rm -rf "$OUTPUT"
 
 echo "Executing Task $TASK ($CLASS)..."
-hadoop jar "$JAR" "$CLASS" "$INPUT" "$OUTPUT" $EXTRA_ARGS
+hadoop jar "$JAR" "$CLASS" "$INPUT" "$OUTPUT" "$EXTRA_ARGS"
 
 if [ $? -eq 0 ]; then
     echo "Success. Results in $OUTPUT"
